@@ -6,18 +6,26 @@
       <div class="card-body">
         <form class="validated-form" action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate
           enctype="multipart/form-data">
+
+
           <div class="form-group mb-3">
             <label class="form-label" for="title">Title</label>
             <!-- when data is sent it's stored under campgrounds -->
             <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title%>"
-              required />
-            <div class="valid-feedback">Yup - valid!</div>
+              required>
+            <div class=" valid-feedback">
+              Yup - valid!
+            </div>
           </div>
           <div class="form-group mb-3">
-            <label class="form-label" for="location">Location</label>
+            <label class="form-label" for="location">
+              <bold>Location</bold> (City, Country)
+            </label>
             <input class="form-control" type="text" id="location" name="campground[location]"
-              value="<%=campground.location%>" required />
-            <div class="valid-feedback">Yup - valid!</div>
+              value="<%=campground.location%>" required>
+            <div class="valid-feedback">
+              Yup - valid!
+            </div>
           </div>
 
           <div class="mb-3">
@@ -27,16 +35,22 @@
                 <span class="input-group-text" id="price-label">$</span>
               </div>
               <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                aria-describedby="price-label" name="campground[price]" value="<%=campground.price %>" required />
-              <div class="valid-feedback">Yup - valid!</div>
+                aria-describedby="price-label" name="campground[price]" value="<%=campground.price %>" required>
+              <div class="valid-feedback">
+                Yup - valid!
+              </div>
             </div>
+
           </div>
           <div class="form-group mb-3">
             <label class="form-label" for="description">Description</label>
             <textarea class="form-control" name="campground[description]" id="description" cols="30" rows="3"
               required><%=campground.description%></textarea>
-            <div class="valid-feedback">Yup - valid!</div>
+            <div class="valid-feedback">
+              Yup - valid!
+            </div>
           </div>
+          <!--  -->
           <div class="mb-3">
             <label class="mb-3" for="image" class="form-file-label">
               Please Upload Additional Images Below:

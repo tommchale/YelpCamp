@@ -149,14 +149,14 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   next();
 });
-app.get("/fakeUser", async (req, res) => {
-  const user = new User({
-    email: "tom@gmail.com",
-    username: "tomm"
-  });
-  const newUser = await User.register(user, "mynameistom");
-  res.send(newUser);
-});
+// app.get("/fakeUser", async (req, res) => {
+//   const user = new User({
+//     email: "tom@gmail.com",
+//     username: "tomm"
+//   });
+//   const newUser = await User.register(user, "mynameistom");
+//   res.send(newUser);
+// });
 
 app.use("/", userRoutes);
 app.use("/campgrounds", campgroundRoutes);
