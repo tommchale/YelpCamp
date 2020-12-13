@@ -11,13 +11,21 @@ const ImageSchema = new Schema({
 });
 
 ImageSchema.virtual("thumbnail").get(function () {
-  return this.url.replace("/upload/w_450,h_300", "/upload/w_200");
+  return this.url.replace("/upload", "/upload/w_200");
 });
 
-const opts = { toJSON: { virtuals: true } };
+ImageSchema.virtual("display").get(function () {
+  return this.url.replace("/upload", "/upload/w_450,h_300");
+});
 
-const CampgroundSchema = new Schema(
-  {
+
+const opts = {
+  toJSON: {
+    virtuals: true
+  }
+};
+
+const CampgroundSchema = new Schema({
     title: String,
     images: [ImageSchema],
     geometry: {
@@ -38,12 +46,10 @@ const CampgroundSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    reviews: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
+    reviews: [{
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    }, ],
   },
   opts
 );

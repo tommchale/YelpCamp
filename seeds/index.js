@@ -5,7 +5,10 @@ if (process.env.NODE !== "production") {
 
 const mongoose = require("mongoose");
 const cities = require("./cities");
-const { places, descriptors } = require("./seedHelpers");
+const {
+  places,
+  descriptors
+} = require("./seedHelpers");
 // . means back out one
 const Campground = require("../models/campground");
 
@@ -42,20 +45,16 @@ const seedDB = async () => {
         type: "Point",
         coordinates: [cities[randomNum].lng, cities[randomNum].lat],
       },
-      images: [
-        {
-          url:
-            "https://res.cloudinary.com/db2zsdvyh/image/upload/w_450,h_300/v1607605801/YelpCamp/dkmzcwgbwukurqeo52ph.jpg",
+      images: [{
+          url: "https://res.cloudinary.com/db2zsdvyh/image/upload/v1607605801/YelpCamp/dkmzcwgbwukurqeo52ph.jpg",
           filename: "YelpCamp/dkmzcwgbwukurqeo52ph",
         },
         {
-          url:
-            "https://res.cloudinary.com/db2zsdvyh/image/upload/w_450,h_300/v1607635130/YelpCamp/mg7p1zxumyqtee0pjvm8.jpg",
+          url: "https://res.cloudinary.com/db2zsdvyh/image/upload/v1607635130/YelpCamp/mg7p1zxumyqtee0pjvm8.jpg",
           filename: "YelpCamp/mg7p1zxumyqtee0pjvm8",
         },
       ],
-      description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga ratione nostrum voluptas minus corporis ad atque itaque ex reiciendis recusandae a sint blanditiis, accusantium voluptatem distinctio omnis delectus. Culpa, similique?",
+      description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga ratione nostrum voluptas minus corporis ad atque itaque ex reiciendis recusandae a sint blanditiis, accusantium voluptatem distinctio omnis delectus. Culpa, similique?",
       price: price,
     });
     await camp.save();

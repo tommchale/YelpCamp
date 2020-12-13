@@ -8,3 +8,11 @@
     height: 300px;
 
 }
+
+
+.check-box-hover-custom-off:hover {
+
+    color: #dc3545;
+    background-color: white;
+    text-shadow: none;
+}
