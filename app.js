@@ -2,6 +2,8 @@ if (process.env.NODE !== "production") {
   require("dotenv").config();
 }
 
+// should be included on github
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -44,7 +46,9 @@ app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
@@ -146,7 +150,10 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/fakeUser", async (req, res) => {
-  const user = new User({ email: "tom@gmail.com", username: "tomm" });
+  const user = new User({
+    email: "tom@gmail.com",
+    username: "tomm"
+  });
   const newUser = await User.register(user, "mynameistom");
   res.send(newUser);
 });
@@ -165,10 +172,14 @@ app.all("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  const { statusCode = 500 } = err;
+  const {
+    statusCode = 500
+  } = err;
   // need to set a default message
   if (!err.message) err.message = "Oh No - Something Has Gone Wrong";
-  res.status(statusCode).render("error", { err });
+  res.status(statusCode).render("error", {
+    err
+  });
 });
 
 const port = process.env.PORT || 3000;
